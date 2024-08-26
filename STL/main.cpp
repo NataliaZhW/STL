@@ -1,6 +1,8 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<array>
 #include<vector>
+#include<list>
+
 using std::cin;
 using std::cout;
 using std::endl;
@@ -18,7 +20,7 @@ void main()
 	setlocale(LC_ALL, "");
 
 #ifdef STL_ARRAY
-	//array - это контейнер, который хранит данные в виде статического массива.
+	//array - СЌС‚Рѕ РєРѕРЅС‚РµР№РЅРµСЂ, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РґР°РЅРЅС‹Рµ РІ РІРёРґРµ СЃС‚Р°С‚РёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°.
 	const int SIZE = 5;
 	std::array<int, SIZE> arr = { 3, 5, 8 };
 	for (int i = 0; i < SIZE; i++)
@@ -31,7 +33,7 @@ void main()
 #endif // STL_ARRAY
 
 #ifdef STL_VECTOR
-	//vector - это контейнер, который хранит данные в виде динамического массива.
+	//vector - СЌС‚Рѕ РєРѕРЅС‚РµР№РЅРµСЂ, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РґР°РЅРЅС‹Рµ РІ РІРёРґРµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°.
 	std::vector<int> vec = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 };
 	try
 	{
@@ -52,11 +54,11 @@ void main()
 	vec.push_back(144);
 	vector_properties(vec);
 
-	//vec.resize(15);	//задает фактический размер Вектора.
-	//vec.shrink_to_fit();//урезает вместительность до фактического размера.
-	vec.reserve(120);	//позволяет зарезервировать нужный объем памяти.
-	//Этот метод выполняется только в том случае, если ему передать значение,
-	//больше текущего capacity();
+	//vec.resize(15);	//Р·Р°РґР°РµС‚ С„Р°РєС‚РёС‡РµСЃРєРёР№ СЂР°Р·РјРµСЂ Р’РµРєС‚РѕСЂР°.
+	//vec.shrink_to_fit();//СѓСЂРµР·Р°РµС‚ РІРјРµСЃС‚РёС‚РµР»СЊРЅРѕСЃС‚СЊ РґРѕ С„Р°РєС‚РёС‡РµСЃРєРѕРіРѕ СЂР°Р·РјРµСЂР°.
+	vec.reserve(120);	//РїРѕР·РІРѕР»СЏРµС‚ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РЅСѓР¶РЅС‹Р№ РѕР±СЉРµРј РїР°РјСЏС‚Рё.
+	//Р­С‚РѕС‚ РјРµС‚РѕРґ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РµРјСѓ РїРµСЂРµРґР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ,
+	//Р±РѕР»СЊС€Рµ С‚РµРєСѓС‰РµРіРѕ capacity();
 	for (int i : vec)cout << i << tab; cout << endl;
 	vector_properties(vec);
 	cout << vec.front() << endl;
@@ -76,34 +78,49 @@ void main()
 	cout << endl;
 	int index;
 	int value;
-	cout << "Введите индекс добавляемого элемента: "; cin >> index;
-	cout << "Введите значение добавляемого элемента: "; cin >> value;
-	
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> value;
+
 	//std::vector<int>::iterator position = vec.begin();
 	//std::advance(position, index); 
 	//vec.insert(position, value);
-	vec.insert(vec.begin()+ index, value);
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-	{
-		cout << *it << tab;
-	}
+	vec.insert(vec.begin() + index, value);
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) { cout << *it << tab; }
 	vector_properties(vec);
 
 
-	cout << "Введите индекс удаляемого элемента: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
 	//std::vector<int>::iterator position1 = vec.begin();
 	//std::advance(position1, index);
 	//vec.erase(position1);
-	vec.erase(vec.begin()+ index);
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-	{
-		cout << *it << tab;
-	}
+	vec.erase(vec.begin() + index);
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) { cout << *it << tab; }
 	vector_properties(vec);
 
 
 #endif // STL_VECTOR
 
+
+	std::list<int> list1 = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 };
+	for (int i : list1)cout << i << tab; cout << endl;
+	
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> value;
+	std::list<int>::iterator position = list1.begin();
+	for (int i = 0; i < index; i++)++position;
+	//std::advance(position, index);
+	list1.insert(position, value);
+	//list1.insert(list1.begin() + index, value);
+	for (int i : list1)cout << i << tab; cout << endl;
+
+
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
+	std::list<int>::iterator position3 = list1.begin();
+	for (int i = 0; i < index; i++)++position3;
+	//std::advance(position3, index);
+	list1.erase(position3);
+	//list1.insert(list1.begin() + index, value);
+	for (int i : list1)cout << i << tab; cout << endl;
 }
 
 
