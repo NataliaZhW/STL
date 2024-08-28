@@ -70,11 +70,15 @@ void main()
 		//cout << vec.data()[i] << tab;
 	}
 	cout << endl;
-	cout << "Iterators:" << endl;
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+	cout << "Iterators:" << endl << delimiter << delimiter;
+	for (int i : vec)
 	{
-		cout << *it << tab;
+		cout << i << tab;
 	}
+	//for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+	//{
+	//	cout << *it << tab;
+	//}
 	cout << endl;
 	int index;
 	int value;
@@ -85,7 +89,10 @@ void main()
 	//std::advance(position, index); 
 	//vec.insert(position, value);
 	vec.insert(vec.begin() + index, value);
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) { cout << *it << tab; }
+
+	cout << "Iterators:" << endl << delimiter << delimiter;
+	for (int i : vec) { cout << i << tab; }
+	//for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) { cout << *it << tab; }
 	vector_properties(vec);
 
 
@@ -94,7 +101,8 @@ void main()
 	//std::advance(position1, index);
 	//vec.erase(position1);
 	vec.erase(vec.begin() + index);
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) { cout << *it << tab; }
+	for (int i : vec) { cout << i << tab; }
+	//for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) { cout << *it << tab; }
 	vector_properties(vec);
 
 
@@ -103,7 +111,7 @@ void main()
 
 	std::list<int> list1 = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 };
 	for (int i : list1)cout << i << tab; cout << endl;
-	
+
 	cout << "Введите индекс добавляемого элемента: "; cin >> index;
 	cout << "Введите значение добавляемого элемента: "; cin >> value;
 	std::list<int>::iterator position = list1.begin();
