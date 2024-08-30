@@ -17,7 +17,12 @@ void main()
 	offense.push_front("mulct"+1 + offense.size());
 	offense.push_front("mulct"+1 + offense.size());
 	
-	offense.;
+	
+	for (size_t i = 0; i < length; i++)
+	{
+
+	};
+	offense;
 	
 }
 //class List
